@@ -46,7 +46,7 @@ calc_entro.py teststring teststring2 teststring3 -files test1.txt -files test2.t
 ---
 Content: TEST
 Probabilities: {'T': 0.5, 'E': 0.25, 'S': 0.25}
-Entropy: 1.5
+Entropy: 1.5 bits
 ---
 ```
 
@@ -54,11 +54,13 @@ or simplistic like this:
 
 ```
 ---
-Entropy: 1.5
+Entropy: 1.5 bits
 ---
 ```
 
 ### String conversion
 `--lower` - Converts the input strings to lowercase
+
 `--upper` - Opposite of lower, converts to upper (if both are set only lower will be executed)
+
 `--squash` - Removes all whitespaces from input files (*This doesn't apply to input strings as they will be separated by spaces anyways!*)
