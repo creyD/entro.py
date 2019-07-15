@@ -17,24 +17,24 @@ Well that is basically up to you. Entropy functions are used in Computer Science
 ## Usage
 You can run as much calculations as you want in one run of the script. For example use it like this with a simple string:
 ```
-calc_entro.py teststring
+entro.py teststring
 ```
 or this for a file:
 
 ```
-calc_entro.py -files test.txt
+entro.py -files test.txt
 ```
 
 or combine both of them:
 
 ```
-calc_entro.py teststring -files test.txt
+entro.py teststring -files test.txt
 ```
 
 Both arguments work with as many strings and filepaths as you want. Just separate them using a space like this:
 
 ```
-calc_entro.py teststring teststring2 teststring3 -files test1.txt -files test2.txt
+entro.py teststring teststring2 teststring3 -files test1.txt -files test2.txt
 ```
 
 ## Command line parameters
