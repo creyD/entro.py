@@ -10,10 +10,10 @@ import argparse
 
 
 # Calculates the entropy of a given string (as described in the docstring)
-def calcEntropy(string):
+def calculateEntropy(input_string):
     alphabet, alphabet_size, entropy = {}, 0, 0
 
-    for char in string:
+    for char in input_string:
         if char in alphabet:
             alphabet[char] += 1
         else:
@@ -22,24 +22,24 @@ def calcEntropy(string):
 
     for char in alphabet:
         alphabet[char] = alphabet[char] / alphabet_size
-        entropy += alphabet[char] * math.log(alphabet[char], 2)
+        entropy -= alphabet[char] * math.log(alphabet[char], 2)
 
-    return -entropy, alphabet
+    return entropy, alphabet
 
 
 # Outputs a given entropy including the original text and the alphabet with probabilities
-def printEntropy(original, entropy, alphabet, simple):
+def printEntropy(original_string, entropy_value, alphabet_dict, simple_bool):
     print('---')
-    if simple == False:
-        print('Content: ' + original)
-        print('Probabilities: ' + str(alphabet))
-    print('Entropy: ' + str(entropy) + ' bits')
+    if simple_bool == False:
+        print('Content: ' + original_string)
+        print('Probabilities: ' + str(alphabet_dict))
+    print('Entropy: ' + str(entropy_value) + ' bits')
     print('---')
 
 
 # Reads a file by a given path
-def getFile(path):
-    f = open(path, 'r')
+def readEntropyFile(path_string):
+    f = open(path_string, 'r')
     content = f.read().replace('\n', ' ')
     f.close()
     return content.strip()
@@ -70,7 +70,7 @@ for string in args.strings:
 
 # Add all the provided files to the list
 for file in args.files:
-    string = getFile(file)
+    string = readEntropyFile(file)
     queue.append(string)
 
 # Interates over the collected strings and prints the entropies
@@ -83,5 +83,5 @@ for string in queue:
     if args.squash != False:
         string = string.replace(" ", "")
 
-    a, b = calcEntropy(string)
+    a, b = calculateEntropy(string)
     printEntropy(string, a, b, args.simple)
