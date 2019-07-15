@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="entro_py-creyD",
-    version="1.0.1",
+    version="1.0.3",
     author="Conrad Großer",
     author_email="grosserconrad@gmail.com",
     description="Small Information Entropy Calculator",
