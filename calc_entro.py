@@ -33,7 +33,7 @@ def printEntropy(original, entropy, alphabet, simple):
     if simple == False:
         print('Content: ' + original)
         print('Probabilities: ' + str(alphabet))
-    print('Entropy: ' + str(entropy))
+    print('Entropy: ' + str(entropy) + ' bits')
     print('---')
 
 
