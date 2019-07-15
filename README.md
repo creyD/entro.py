@@ -15,17 +15,17 @@ Well that is basically up to you. Entropy functions are used in Computer Science
 *Warning:* This can only be used for calculating the entropy of strings (by alphabet). There are however other types like coin tosses of fair or unfair coins (...), but you're gonna have to write calculators for this on your own - for now.
 
 ## Usage
-You can run as much calculations as you want in one run of the script.
+You can run as much calculations as you want in one run of the script. For example use it like this with a simple string:
 ```
 calc_entro.py teststring
 ```
-or
+or this for a file:
 
 ```
 calc_entro.py -files test.txt
 ```
 
-or combine both of them
+or combine both of them:
 
 ```
 calc_entro.py teststring -files test.txt
