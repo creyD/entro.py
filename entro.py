@@ -11,29 +11,31 @@ import argparse
 
 # Calculates the entropy of a given string (as described in the docstring)
 def calculateEntropy(input_string):
-    alphabet, alphabet_size, entropy = {}, 0, 0
+    alphabet, alphabet_size, entropy = {}, len(input_string), 0
 
     for char in input_string:
         if char in alphabet:
             alphabet[char] += 1
         else:
             alphabet[char] = 1
-        alphabet_size += 1
 
     for char in alphabet:
         alphabet[char] = alphabet[char] / alphabet_size
         entropy -= alphabet[char] * math.log(alphabet[char], 2)
 
-    return entropy, alphabet
+    max_entropy = - len(alphabet) * (1/len(alphabet) * math.log(1/len(alphabet), 2))
+    return entropy, alphabet, max_entropy
 
 
 # Outputs a given entropy including the original text and the alphabet with probabilities
-def printEntropy(original_string, entropy_value, alphabet_dict, simple_bool):
+def printEntropy(original_string, entropy_value, alphabet_dict, simple_bool, max_value):
     print('---')
     if simple_bool == False:
         print('Content: ' + original_string)
         print('Probabilities: ' + str(alphabet_dict))
     print('Entropy: ' + str(entropy_value) + ' bits')
+    if max_value:
+        print('Maximum Entropy: ' + str(max_value) + ' bits')
     print('---')
 
 
@@ -46,7 +48,7 @@ def readEntropyFile(path_string):
 
 
 # List of the arguments one can use to influence the behavior of the program
-parser = argparse.ArgumentParser(description='Calculate the information entropy of some strings.')
+parser = argparse.ArgumentParser(description='Calculate the information entropy of alphabets.')
 
 # INPUT ARGUMENTS
 parser.add_argument('strings', nargs='*', default='', type=str, help='Strings to calculate the entropy of.')
@@ -54,6 +56,7 @@ parser.add_argument('--files', nargs='*', type=str, default='', help='Provide fi
 
 # OUTPUT OPTIONS
 parser.add_argument('--simple', nargs='?', type=bool, default=False, help='Determines the explicitness of the output. (True = only entropy shown)')
+parser.add_argument('--max', nargs='?', type=bool, default=False, help='Includes the maximum entropy.')
 
 # CONVERT OPTIONS
 parser.add_argument('--lower', nargs='?', type=bool, default=False, help='Converts given strings or textfiles to lowercase before calculating.')
@@ -83,5 +86,5 @@ for string in queue:
     if args.squash != False:
         string = string.replace(" ", "")
 
-    a, b = calculateEntropy(string)
-    printEntropy(string, a, b, args.simple)
+    a, b, c = calculateEntropy(string)
+    printEntropy(string, a, b, args.simple, (False if args.max == False else c))
