@@ -1,6 +1,6 @@
 # Entropy Calculator
 
-Written in Python, this calculates the information entropy of a given string or file.
+Written in Python, this calculates the information entropy and maximum entropy of a given string or file.
 
 ## How does this work?
 
@@ -77,4 +77,4 @@ Maximum Entropy: 1.584962500721156 bits
 
 `--upper` - Opposite of lower, converts to upper (if both are set only lower will be executed)
 
-`--squash` - Removes all whitespaces from input files (*This doesn't apply to input strings as they will be separated by spaces anyways!*)
+`--squash` - Removes all whitespaces from input files (*This only applies to command line inputs if they were surrounded by quotation marks! Otherwise they will get split by the spaces as separate arguments.*)
