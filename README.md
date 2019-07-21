@@ -6,7 +6,7 @@ Written in Python, this calculates the information entropy and maximum entropy o
 
 This is a pretty simple calculator which just uses the negative sum of all the probabilities of the chars in a given string multiplied with the logarithm to the base two of the probabilities. The probabilities of the chars are calculated simply by counting the occurrence divided by the total number of chars.
 
-Mathematically speaking this is -sum(p*log(p)) with p being the probability of a char occurring. The maximum entropy calculation is explained below.
+Mathematically speaking this is `-sum(p*log(p))` with p being the probability of a char occurring. The maximum entropy calculation is explained below.
 
 ## What is it good for?
 
@@ -14,13 +14,13 @@ Well that is basically up to you. Entropy functions are used in Computer Science
 
 *Warning:* This can only be used for calculating the entropy of strings (by alphabet). There are however other types like coin tosses of fair or unfair coins (...), but you're gonna have to write calculators for this on your own - for now.
 
-*Update:* This script now can calculate the maximum entropy now too. This is pretty useful for pre-compression analyses. Maximum entropy is calculated by splitting the alphabet into parts of the same size and calculating the entropy of this, like: -1 * SIZE_OF_ALPHABET * (DISTINCT_PROBABILITY * log(DISTINCT_PROBABILITY, 2)).
+*Update:* This script now can calculate the maximum entropy now too. This is pretty useful for pre-compression analyses. Maximum entropy is calculated by splitting the alphabet into parts of the same size and calculating the entropy of this, like: `-1 * SIZE_OF_ALPHABET * (DISTINCT_PROBABILITY * log(DISTINCT_PROBABILITY, 2))`.
 
 ## Usage
-You can run as much calculations as you want in one run of the script. For example use it like this with a simple string:
+You can run as much calculations as you want in one run of the script. For example use it like this with a simple string (you can skip the quotation marks if you don't have spaces in your string - if you want):
 
 ```
-entro.py teststring
+entro.py "teststring"
 ```
 or this for a file:
 
@@ -31,13 +31,13 @@ entro.py -files test.txt
 or combine both of them:
 
 ```
-entro.py teststring -files test.txt
+entro.py "teststring" -files test.txt
 ```
 
 Both arguments work with as many strings and filepaths as you want. Just separate them using a space like this:
 
 ```
-entro.py teststring teststring2 teststring3 -files test1.txt -files test2.txt
+entro.py "teststring" "teststring2" teststring3 -files test1.txt -files test2.txt
 ```
 
 ## Command line parameters
