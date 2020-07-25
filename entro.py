@@ -30,7 +30,7 @@ def calculateEntropy(input_string):
 # Outputs a given entropy including the original text and the alphabet with probabilities
 def printEntropy(original_string, entropy_value, alphabet_dict, simple_bool, max_value):
     print('---')
-    if simple_bool == False:
+    if not simple_bool:
         print('Content: ' + original_string)
         print('Probabilities: ' + str(alphabet_dict))
     print('Entropy: ' + str(entropy_value) + ' bits')
@@ -78,13 +78,13 @@ for file in args.files:
 
 # Interates over the collected strings and prints the entropies
 for string in queue:
-    if args.lower != False:
+    if args.lower:
         string = string.lower()
-    elif args.upper != False:
+    elif args.upper:
         string = string.upper()
 
-    if args.squash != False:
+    if args.squash:
         string = string.replace(" ", "")
 
     a, b, c = calculateEntropy(string)
-    printEntropy(string, a, b, args.simple, (False if args.max == False else c))
+    printEntropy(string, a, b, args.simple, (False if not args.max else c))
