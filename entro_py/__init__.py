@@ -1,1 +1,0 @@
-name = "entro_py"
