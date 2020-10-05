@@ -16,6 +16,12 @@ Well that is basically up to you. Entropy functions are used in Computer Science
 
 *Update:* This script now can calculate the maximum entropy now too. This is pretty useful for pre-compression analyses. Maximum entropy is calculated by splitting the alphabet into parts of the same size and calculating the entropy of this, like: `-1 * SIZE_OF_ALPHABET * (DISTINCT_PROBABILITY * log(DISTINCT_PROBABILITY, 2))`.
 
+## Installing
+You can install this package easily with `pip`:
+```
+$ pip install git+https://github.com/creyD/entro.py@dev_package
+```
+
 ## Usage
 
 You can run as much calculations as you want in one run of the script. For example use it like this with a simple string (you can skip the quotation marks if you don't have spaces in your string - if you want):
