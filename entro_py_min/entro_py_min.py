@@ -1,5 +1,6 @@
 import math
 
+
 # Calculates the entropy of a given string
 # Returns the entropy and an alphabet with the calculated probabilities
 def calculateEntropy(input_string):
@@ -36,3 +37,23 @@ def calculateEntropyMin(input_string):
         entropy -= i * math.log(i, 2)
 
     return entropy
+
+
+# Outputs a given entropy including the original text and the alphabet with probabilities
+def printEntropy(original_string, entropy_value, alphabet_dict, simple_bool, max_value):
+    print('---')
+    if not simple_bool:
+        print('Content: ' + original_string)
+        print('Probabilities: ' + str(alphabet_dict))
+    print('Entropy: ' + str(entropy_value) + ' bits')
+    if max_value:
+        print('Maximum Entropy: ' + str(max_value) + ' bits')
+    print('---')
+
+
+# Reads a file by a given path
+def readEntropyFile(path_string):
+    f = open(path_string, 'r')
+    content = f.read().replace('\n', ' ')
+    f.close()
+    return content.strip()
